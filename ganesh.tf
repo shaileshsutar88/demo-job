@@ -1,12 +1,10 @@
-provider "aws" {
-  region     = "${var.region}"
-}
 
 resource "aws_instance" "tf-test" {
   #count         = "${var.count}"
   ami           = "${var.aws_ami}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
+  region     = "${var.region}"
   availability_zone = "${var.region}${element(split(",",var.zones),count.index)}"
   tags {
     Name = "tf-test${count.index + 1}"
