@@ -22,3 +22,10 @@ variable "count" {
     default = "2"
 }
 
+variable "access_key" {
+	default =""
+}
+
+variable "secret_key" {
+	default =""
+}
