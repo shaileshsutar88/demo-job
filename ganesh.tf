@@ -45,6 +45,7 @@ variable "aws_ami" {
 variable "zones"{
   default = "a,b"
 }
+
 variable "region" {
     default = "ap-southeast-1"
 }
@@ -57,10 +58,7 @@ variable "instance_type" {
     default = "t2.micro"
 }
 
-#variable "count" {
- #   default = "2"
+# variable "count" {
+#   default = "2"
 #}
 
-variable "region" {
-	default = "ap-southeast-1"
-}
