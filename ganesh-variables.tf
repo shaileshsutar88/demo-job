@@ -6,7 +6,7 @@ variable "zones"{
   default = "a,b"
 }
 
-variable "region" {
+variable "aws_region" {
     default = "ap-southeast-1"
 }
 

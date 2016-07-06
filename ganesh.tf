@@ -1,15 +1,14 @@
 provider "aws" {
-  region = "${var.region}"
+  region = "${var.aws_region}"
   access_key = "${var.access_key}"
   secret_key = "${var.secret_key}"
 }
 
 resource "aws_instance" "tf-test" {
-  ami           = "${var.region}"
+  ami           = "${var.aws_ami}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
-  region     = "${var.region}"
-  availability_zone = "${var.region}${element(split(",",var.zones),count.index)}"
+  availability_zone = "${var.aws_region}${element(split(",",var.zones),count.index)}"
   tags {
     Name = "tf-test${count.index + 1}"
     Owner = "shailesh"
