@@ -1,7 +1,6 @@
 
 resource "aws_instance" "tf-test" {
-  #count         = "${var.count}"
-  ami           = "${var.aws_ami}"
+  ami           = "ami-a59b49c6"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
   region     = "${var.region}"
@@ -57,8 +56,3 @@ variable "key_name" {
 variable "instance_type" {
     default = "t2.micro"
 }
-
-# variable "count" {
-#   default = "2"
-#}
-
