@@ -1,0 +1,6 @@
+region = "ap-southeast-1"
+ami = "ami-a59b49c6"
+key = "test-key"
+instance_type = "t2.micro"
+security_group = "default"
+#count = "2"
