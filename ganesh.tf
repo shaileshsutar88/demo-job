@@ -62,3 +62,7 @@ variable "instance_type" {
 #variable "count" {
  #   default = "2"
 #}
+
+variable "region" {
+	default = "ap-southeast-1"
+}
