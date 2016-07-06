@@ -1,6 +1,11 @@
+provider "aws" {
+  region = "ap-southeast-1"
+  access_key = "${var.access_key}"
+  secret_key = "${var.secret_key}"
+}
 
 resource "aws_instance" "tf-test" {
-  ami           = "ami-a59b49c6"
+  ami           = "${var.region}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
   region     = "${var.region}"
@@ -35,24 +40,4 @@ instances = ["${aws_instance.tf-test.*.id}"]
   connection_draining = true
   connection_draining_timeout = 400
 
-}
-
-variable "aws_ami" {
-  default = "ami-a59b49c6"
-}
-
-variable "zones"{
-  default = "a,b"
-}
-
-variable "region" {
-    default = "ap-southeast-1"
-}
-
-variable "key_name" {
-    default = "test-key"
-}
-
-variable "instance_type" {
-    default = "t2.micro"
 }
