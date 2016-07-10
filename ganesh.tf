@@ -10,7 +10,7 @@ resource "aws_instance" "tf-test" {
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
   availability_zone = "${var.aws_region}${element(split(",",var.zones),count.index)}"
-  user_data = "${template_file.userdata.id}"
+  user_data = "${file("userdata.sh")}"
   tags {
     Name = "tf-test${count.index + 1}"
     Owner = "shailesh"
