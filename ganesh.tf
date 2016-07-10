@@ -5,10 +5,12 @@ provider "aws" {
 }
 
 resource "aws_instance" "tf-test" {
+  count = "2"
   ami           = "${var.aws_ami}"
   instance_type = "${var.instance_type}"
   key_name      = "${var.key_name}"
   availability_zone = "${var.aws_region}${element(split(",",var.zones),count.index)}"
+  user_data = "${template_file.userdata.id}"
   tags {
     Name = "tf-test${count.index + 1}"
     Owner = "shailesh"
