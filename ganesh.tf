@@ -47,7 +47,7 @@ instances = ["${aws_instance.jenkins-poc.*.id}"]
 
 resource "aws_security_group" "jenkins-poc" {
   vpc_id = "${var.vpc_id}"
-  name = "jenkins-poc"
+  name = "${var.security_group_name}"
   description = "Allow http,httpd and SSH"
 
   ingress {
