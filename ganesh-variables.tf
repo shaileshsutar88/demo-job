@@ -29,3 +29,12 @@ variable "access_key" {
 variable "secret_key" {
 	default =""
 }
+variable "security_group_name" {
+    default = "jenkins-poc"
+}
+variable "vpc_id" {
+    default = "vpc-"
+}
+variable "subnet_id" {
+    default = "subnet-,subnet-"
+}
