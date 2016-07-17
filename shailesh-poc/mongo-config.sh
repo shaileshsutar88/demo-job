@@ -35,7 +35,7 @@ p
 
 
 w
-"|sudo fdisk $i;sudo partprobe "$i1";sudo mkfs.xfs -f "${i}1"; sudo blockdev --setra 32 "${i}1";done
+"|sudo fdisk $i;sudo partprobe "$i1";sudo mkfs.xfs -f "${i}1";done
 echo `date`" Formatting of EBS Volume is complete " >> /home/ec2-user/logs/$fname.log
 echo `date`" Creating Mount point for EBS Volumes and mounting them " >> /home/ec2-user/logs/$fname.log
 	sudo mkdir /mondba
