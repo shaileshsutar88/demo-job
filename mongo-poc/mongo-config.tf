@@ -17,7 +17,7 @@ resource "aws_instance" "web" {
     user_data = "${file("mongo-config.sh")}"
 	tags {
     Name = "mongo-server${count.index + 1}"
-    Owner = "pradeep"
+    Owner = "Mongo-cluster"
   }
 }
  resource "aws_placement_group" "web" {

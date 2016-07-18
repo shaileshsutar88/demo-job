@@ -14,7 +14,7 @@ variable "instance_type" {
     default = "t2.micro"
 }
 variable "security_group_name" {
-    default = "pradeep-mongodb"
+    default = "mongodb-sg"
 }
 variable "vpc_id" {
     default = "vpc-"
