@@ -45,8 +45,8 @@ echo `date`" Creating Mount point for EBS Volumes and mounting them " >> /home/e
 	sudo df -Th
 echo `date`" Mount point  creation complete" >> /home/ec2-user/logs/$fname.log
 echo `date`"Creating mount point entries in /etc/fstab file" >> /home/ec2-user/logs/$fname.log
-	sudo echo "/dev/xvdh1  /mondba     xfs     defaults        0   0" >> /etc/fstab
-	sudo echo "/dev/xvdg1  /monbackup  xfs     defaults        0   0" >> /etc/fstab
+	sudo echo "/dev/xvdh1  /mondba     xfs     defaults,noatime,nodiratime        0   0" >> /etc/fstab
+	sudo echo "/dev/xvdg1  /monbackup  xfs     defaults,noatime,nodiratime        0   0" >> /etc/fstab
 echo `date`"Creating mount point entries in /etc/fstab file complete" >> /home/ec2-user/logs/$fname.log
 echo `date`" Adding new limits /etc/security/limits.conf file " >> /home/ec2-user/logs/$fname.log
 	sudo echo "*                soft    nofile          64000" >> /etc/security/limits.conf
