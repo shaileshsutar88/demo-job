@@ -1,3 +1,16 @@
+Note :: Information about latest content of the repository will get added to top of this file.
+
+New addition is mongo-poc.
+Objective :
+ Spin up Ec2 instance, attach 2 volumes and set system parameters for mongo
+
+Solution :: 
+	1. Create Amazon linux Ec2.
+	2. Create 2 EBS volumes format them as xvs partition.
+	3. setup system and kernel parameters to finetune Mongodb
+ 
+
+========================================================
 This is Read Me file for the demo-job project on github.
 There are 3 files in demo-job git repo.
 1. jenkins-poc.tf
