@@ -7,7 +7,7 @@
 #
 user=`whoami`
 key="/home/$user/scripts/key"
-src="ec2-user@172.31.x.x:/var/www/html/"
+src='ec2-user@172.31.x.x:/var/www/html/'
 dst="/var/www/html/"
 sudo mv /var/www/html /var/www/html_`date +%d%m%Y`
 sudo mkdir /var/www/html
