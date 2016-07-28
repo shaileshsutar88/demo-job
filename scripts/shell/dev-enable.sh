@@ -20,8 +20,8 @@ user=$1
 file=$2
 keyfile=$3
 access=$4
-basekey="/home/shailesh/aws-personal/test-key.pem" 
-file1="/home/shailesh/.ssh/id_rsa.pub"
+basekey="/home/test-user/aws/test.pem" 
+userkey="/home/test-user/.ssh/id_rsa.pub"
 user1="ec2-user"
 
 function grant-access {
@@ -31,7 +31,7 @@ function grant-access {
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo mkdir /home/$user/.ssh
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo touch /home/$user/.ssh/authorized_keys
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo chmod 777 -R /home/$user/.ssh
-		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo bash -c "'cat > /home/$user/.ssh/authorized_keys'" < $file1
+		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo bash -c "'cat > /home/$user/.ssh/authorized_keys'" < $userkey
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo chmod 600 /home/$user/.ssh/authorized_keys
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo chown $user.$user /home/$user/.ssh/authorized_keys
 		ssh -i $basekey -o strictHostKeyChecking=no $user1@$line sudo chmod 700 /home/$user/.ssh
