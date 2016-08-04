@@ -2,7 +2,7 @@ require 'net/ssh'
 
 # put commands to send to the remote Ruby here...
 CMDs = [
-  '-v',
+  '-v','uname -a',
 ]
 
 print 'Enter your password: '

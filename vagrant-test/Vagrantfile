@@ -1,0 +1,34 @@
+$HOST1 = "test"
+$HOST2 = "test2"
+$HOST1IP = "10.0.0.2"
+$HOST2IP = "10.0.0.3"
+
+$hostsedit = <<EOB
+    echo "#{$HOST1IP} test" >> /etc/hosts
+    echo "#{$HOST2IP} test2" >> /etc/hosts
+EOB
+
+$configureprivatekey = <<EOB
+    echo "Configuring installed private key."
+    chmod 600 /home/vagrant/.ssh/id_rsa
+EOB
+
+Vagrant.configure("2") do |config|
+    config.vm.box_url = 'https://cloud-images.ubuntu.com/vagrant/trusty/20160802/trusty-server-cloudimg-amd64-vagrant-disk1.box'
+    config.vm.define $HOST1 do |vm_config|
+      vm_config.vm.box = "ubuntu-14.04"
+      vm_config.vm.hostname = $HOST1
+      vm_config.vm.network "private_network", ip: $HOST1IP
+      
+      #Bootstraping of test 
+      vm_config.vm.provision :shell, path: "bootstrap.sh"
+      
+      # Add Hosts File Entries
+      vm_config.vm.provision "shell", inline: $hostsedit
+
+      # Install Private Key
+      vm_config.vm.provision "file", source: "~/.vagrant.d/insecure_private_key", destination: "/home/vagrant/.ssh/id_rsa"
+      vm_config.vm.provision "shell", inline: $configureprivatekey
+    end
+
+end
