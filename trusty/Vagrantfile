@@ -1,0 +1,37 @@
+$HOST1 = "test"
+$HOST2 = "test1"
+$HOST1IP = "10.0.0.2"
+$HOST2IP = "10.0.0.3"
+
+$hostsedit = <<EOB
+    echo "#{$HOST1IP} test" >> /etc/hosts
+    echo "#{$HOST2IP} test1" >> /etc/hosts
+EOB
+
+Vagrant.configure(2) do |config|
+  config.vm.define $HOST1 do |vm_config|
+  	vm_config.vm.box = "ubuntu/trusty64"
+  	vm_config.vm.hostname = $HOST1
+  	vm_config.vm.network "private_network", ip: $HOST1IP
+
+  	vm_config.vm.provision :shell, path: "bootstrap.sh"
+
+  	vm_config.vm.provision :chef_solo do |chef|
+        	chef.run_list = [
+      		"recipe[nginx]"
+    	]	
+  	end
+  end
+  
+  config.vm.define $HOST2 do |config|
+      config.vm.box = "ubuntu/trusty64"
+      config.vm.hostname = $HOST2
+      config.vm.network "private_network", ip: $HOST2IP
+     
+      config.vm.provision :chef_solo do |chef|
+         chef.run_list = [
+          "recipe[cron]"
+     	]
+      end
+  end
+end
