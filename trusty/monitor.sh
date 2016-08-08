@@ -4,6 +4,8 @@
 #
 #
 #
+sudo sh -c 'apt-get install -y mailutils'
+sudo sh -c 'DEBIAN_FRONTEND=noninteractive apt-get install -y mailutils'
 sudo mkdir /home/vagrant/scripts
 cat <<EOT>> /home/vagrant/scripts/health-chech.sh
 TO_ADDRESS="root@web"
