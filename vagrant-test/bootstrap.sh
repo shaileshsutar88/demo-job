@@ -34,11 +34,7 @@ server {
 
 
         location ~ \.php$ {
-
-                #auth_basic "Restricted";
-                #auth_basic_user_file /var/www/html/.htpasswd;
-                #index index.php;
-                include snippets/fastcgi-php.conf;
+                index index.php;
                 fastcgi_pass unix:/var/run/php5-fpm.sock;
                 include fastcgi_params;
         }

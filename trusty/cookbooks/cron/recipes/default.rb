@@ -11,5 +11,5 @@ cron 'health-check.sh' do
   hour '*/3'
   command '/home/vagrant/scripts/health-check.sh'
   user 'vagrant'
-  only_if {File.exists?('/home/vagrant/scripts/health-check.sh')}
+  #only_if {File.exists?('/home/vagrant/scripts/health-check.sh')}
 end
