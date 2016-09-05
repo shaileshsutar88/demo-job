@@ -8,6 +8,7 @@
 #
 
 cron 'health-check.sh' do
+  action :create	
   hour '*/3'
   command '/home/vagrant/scripts/health-check.sh'
   user 'vagrant'
