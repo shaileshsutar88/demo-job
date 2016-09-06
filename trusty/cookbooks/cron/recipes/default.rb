@@ -7,10 +7,24 @@
 # All rights reserved - Do Not Redistribute
 #
 
+directory '/home/vagrant/scripts' do
+  owner 'vagrant'
+  group 'vagrant'
+  mode  '0755'
+  action :create
+end
+
+cookbook_file '/home/vagrant/scripts/health-check.sh' do
+  source 'monitor.sh'
+  owner 'vagrant'
+  group 'vagrant'
+  mode '755'
+end
+
 cron 'health-check.sh' do
-  action :create	
+  action :create
   hour '*/3'
   command '/home/vagrant/scripts/health-check.sh'
   user 'vagrant'
-  #only_if {File.exists?('/home/vagrant/scripts/health-check.sh')}
+  only_if {File.exists?('/home/vagrant/scripts/health-check.sh')}
 end
