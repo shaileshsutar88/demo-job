@@ -7,6 +7,12 @@
 # All rights reserved - Do Not Redistribute
 #
 
+%w{sendmail mailutils mailx}.each do |pkg|
+   package pkg do
+      action :install
+   end
+end
+
 directory '/home/vagrant/scripts' do
   owner 'vagrant'
   group 'vagrant'
