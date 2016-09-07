@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-%w{sendmail mailutils mailx}.each do |pkg|
+%w{sendmail mailutils}.each do |pkg|
    package pkg do
       action :install
    end
