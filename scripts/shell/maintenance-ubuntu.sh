@@ -31,8 +31,8 @@ function production {
 function maintenance {
 	sudo sed -i "s|/var/www/example|/var/www/maintenance|g" /etc/nginx/conf.d/production.conf
 	sudo sed -i "s|/var/www/maintenance|/var/www/example|g" /etc/nginx/conf.d/maintenance.conf
-        sudo $serv1 restart
-        sudo $serv2 restart
+    sudo $serv1 restart
+    sudo $serv2 restart
 }
 
 if [ $state == "maintenance" ]
