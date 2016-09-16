@@ -12,8 +12,6 @@
 if [ $# -ne 1 ]; then
     echo "Usage:"
     echo "./maintenace-ubuntu.sh <deployment-state>"
-    echo "username should name of users who's access needs to be enable or disable "
-    echo "file which contains list of IP's of servers"
     echo "state type should either 'production' or 'maintenance' "
     exit 1
 fi
