@@ -1,0 +1,5 @@
+source 'https://supermarket.chef.io'
+
+metadata
+cookbook "nginx",           github: "opscode-cookbooks/nginx"
+cookbook 'php-fpm', '~> 0.7.6'
